@@ -1,0 +1,48 @@
+<%
+=begin%>
+ <p style="color: green"><%= notice %></p> 
+<%
+=end%>
+
+<div class="d-flex justify-content-between align-items-center">
+<h1>Customers</h1>
+<%
+=begin%>
+ <%= link_to "ADD", new_customer_path %> 
+<%
+=end%>
+<%= link_to "Export to Excel", data_exports_export_to_excel_path %>
+
+</div>
+
+<div id="customers">
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @customers.each do |customer| %>
+    <tr>
+      <th scope="id"><%= customer.id %></th>
+      <td><%= customer.first_name %></td>
+      <td><%= customer.last_name %></td>
+      <td><%= customer.email %></td>
+      <td><%= customer.phone %></td>
+      <td>
+        <%= link_to "Show", customer, class: 'btn btn-primary' %>
+        <%= button_to "Delete", customer, method: :delete, class: 'btn btn-danger', form_class: 'd-inline-block'  %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
+
+
